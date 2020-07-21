@@ -13,8 +13,7 @@ We recommend using C#, .Net Core, and WebAPI to build this API.
     - Validate the information received from the frontend
 - One operation to query all data that has been stored
 - One operation to query one of the input data stored
-- Only authorised users can call this API
-- Storage
+- Storage (optional)
     - Create the storage for the valid credit card
     - Create the storage for the input fields
 - Use REST standards
@@ -34,7 +33,7 @@ Please commit frequently to communicate your throughts while working on this ass
 - API documentation for consumers
 
 ## Duration
-Use about 2 hours on this assignment. You are expected to complete the most of what is defined in the specification section considering the things we value.
+Use about 2 hours on this assignment. You are expected to complete most of what is defined in the specification section also considering the things we value.
 
 ## Tech
 - API following the REST standards
