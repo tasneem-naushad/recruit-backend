@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using CreditCardApi.Model;
-using Microsoft.Extensions.Logging;
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using CreditCardApi.Model;
+using CreditCardApi.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CreditCardApi.Controllers
 {
@@ -15,37 +12,32 @@ namespace CreditCardApi.Controllers
 
     [Route("api/CreditCard")]
     [ApiController]
+    [Authorize]
     public class CreditCardController : ControllerBase
     {
 
-         private readonly ILogger<CreditCardController> _logger;
-         private readonly CreditCardContext _context;
+ 
+         private readonly ICreditCardService _cardService ;
 
-        public CreditCardController(CreditCardContext context,ILogger<CreditCardController> logger)
+        public CreditCardController( ICreditCardService cardService)
         {
-            _context = context;
-            _logger = logger;
+            _cardService=cardService;
         }
 
         // GET: api/CreditCard
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CreditCardItemDTO>>> GetCreditCardItems()
         {
-            return await _context.CreditCardItems.Select(x=> CreditCardItemDTO(x)).ToListAsync();
+            return await _cardService.GetCreditCardItems();
         }
 
         // GET: api/CreditCard/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CreditCardItemDTO>> GetCreditCardItem(long id)
-        {
-            var creditCardItem = await _context.CreditCardItems.FindAsync(id);
-
-            if (creditCardItem == null)
-            {
-                return NotFound();
-            }
-
-            return CreditCardItemDTO( creditCardItem);
+        {           
+           return await _cardService.GetCreditCardItem(id);            
+          
         }
 
         // PUT: api/CreditCard/5
@@ -53,41 +45,7 @@ namespace CreditCardApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCreditCardItem(long id, CreditCardItemDTO creditCardItemDTO)
         {
-            if (id != creditCardItemDTO.Id)
-            {
-                return BadRequest();
-            }
-
-          //  _context.Entry(creditCardItemDTO).State = EntityState.Modified;
-
-            var creditCardItem = await _context.CreditCardItems.FindAsync(id);
-            if (creditCardItem == null)
-            {
-                return NotFound();
-            }
-            creditCardItem.Id = creditCardItemDTO.Id;
-            creditCardItem.Name = creditCardItemDTO.Name;
-            creditCardItem.ExpiryDate = creditCardItemDTO.ExpiryDate;
-            creditCardItem.CSV = creditCardItemDTO.CSV;
-            creditCardItem.CreditCardNumber = creditCardItemDTO.CreditCardNumber;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CreditCardItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return await  _cardService.PutCreditCardItem(id, creditCardItemDTO);
         }
 
         // POST: api/CreditCard
@@ -95,50 +53,17 @@ namespace CreditCardApi.Controllers
         [HttpPost]
         public async Task<ActionResult<CreditCardItem>> PostCreditCardItem(CreditCardItemDTO creditCardItemDTO)
         {
-        var creditCardItem = new CreditCardItem
-            {
-                CreditCardNumber = creditCardItemDTO.CreditCardNumber,
-                Name = creditCardItemDTO.Name,
-                ExpiryDate = creditCardItemDTO.ExpiryDate,
-                CSV = creditCardItemDTO.CSV 
-            };
-
-            _context.CreditCardItems.Add(creditCardItem);
-            await _context.SaveChangesAsync();
-
-          //  return CreatedAtAction("GetCreditCardItem", new { id = creditCardItem.Id }, creditCardItem);
-            return CreatedAtAction(nameof(GetCreditCardItem), new { id = creditCardItem.Id }, CreditCardItemDTO(creditCardItem));
+             return await  _cardService.PostCreditCardItem(creditCardItemDTO);
         }
 
         // DELETE: api/CreditCard/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCreditCardItem(long id)
         {
-            var creditCardItem = await _context.CreditCardItems.FindAsync(id);
-            if (creditCardItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.CreditCardItems.Remove(creditCardItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+           return await  _cardService.DeleteCreditCardItem(id);
         }
 
-        private bool CreditCardItemExists(long id)
-        {
-            return _context.CreditCardItems.Any(e => e.Id == id);
-        }
+       
 
-        private static CreditCardItemDTO CreditCardItemDTO(CreditCardItem creditCardItem) =>
-                new CreditCardItemDTO
-                {
-                    Id = creditCardItem.Id,
-                    Name = creditCardItem.Name,
-                    ExpiryDate = creditCardItem.ExpiryDate,
-                     CreditCardNumber = creditCardItem.CreditCardNumber,
-                    CSV = creditCardItem.CSV
-                };
-    }
+    }   
 }

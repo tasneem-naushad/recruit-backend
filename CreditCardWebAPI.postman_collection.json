@@ -8,11 +8,61 @@
 		{
 			"name": "POST CreditCard",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCM0M4OTlDOUU3MENBMDFDNzg0RDFFNEMxQzMyMUExIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjY1NTkzNjksImV4cCI6MTYyNjU2Mjk2OSwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiY2xpZW50Q3JlZGl0Q2FyZCIsImp0aSI6IkUxMDVFNkRFMUE1Mzg0MUYyQUQyNUQ1MDY0RjQxM0E3IiwiaWF0IjoxNjI2NTU5MzY5LCJzY29wZSI6WyJhcGlDcmVkaXRDYXJkIl19.Hf-cYFfYlot4LQtgcpzBCrlhc6-dSmA0nc4219MTc5fkSnAa1voWC6IxYKlF_G4sZHS8FFKMt1wWNIF7LQ1_1kbevWCh1h4RQ7RL0Ve8xeHYZuhAEmYNUwLXF4QElCB56wN3Tn2Qwgolc2pOQ7UgGGSKxSrQ5Ctg-pUtSnbra_2mH1ZD4KIyA6fotsA023q5QSZHO8zcUAI8oSbxYuXvchUAw0eHq8x4FjrBP0sQGf_kSQ8cqv7d4G_kASkmJRAX-Zxc6Jm6AfPb8nkz8T46AWFkPypDgxl4m0uCzNZ8qtTytnC-HuwjnmmbSkshZXoJHalOlJGb36C_OT1pD8hPDQ",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://localhost:5001/connect/token",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"tasneem\",\r\n    \"creditCardNumber\":\"4111111111111111\",\r\n    \"csv\":\"123\",\r\n    \"expiryDate\":\"2021-08-21\"\r\n}",
+					"raw": "{\r\n    \"name\":\"tasneem\",\r\n    \"creditCardNumber\":\"4999999999999103\",\r\n    \"csv\":\"123\",\r\n    \"expiryDate\":\"2021-08-21\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,12 +70,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/CreditCard",
+					"raw": "https://localhost:6001/api/CreditCard",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "6001",
 					"path": [
 						"api",
 						"CreditCard"
@@ -38,15 +88,65 @@
 		{
 			"name": "Get Credit Card",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCM0M4OTlDOUU3MENBMDFDNzg0RDFFNEMxQzMyMUExIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjY1NTkxNzgsImV4cCI6MTYyNjU2Mjc3OCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiY2xpZW50Q3JlZGl0Q2FyZCIsImp0aSI6IkYxNkVBNDg2ODVCQkE1MkVFNDg2OUI4NkE2MEI0QTFDIiwiaWF0IjoxNjI2NTU5MTc4LCJzY29wZSI6WyJhcGlDcmVkaXRDYXJkIl19.QdLJZOmaijITh_n7ltlaE3x9BzLZOr8GnWanUXfVDv6e0rP913YeKh8DtZlmOKEjK5JJMlxG1L13CX2saAx9ERc_ykRvuRsjOc6qWuey70fKerXQIgROzaLrlicVkUCFafSjkO-sFGQs1SbRPU-tw8rDRYBskwV7q_g_G_up-19CYtzGLwMLwerEF3JGMiQ9D0_BbytyGzVCBA7CqAujwjW0NpEwyLF41dvVg1i9JGkBdgLTJ9IoWnx3-5PGZF-v68lW6WlGnG_jVujnI_6N-tU9liDgHZ_B0oYoPeJDsiSrAjkUZwhb8Zs8eipOB1RCLG6CA7PdLJ30V6yKqA2FnQ",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://localhost:5001/connect/token",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/CreditCard",
+					"raw": "https://localhost:6001/api/CreditCard",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "6001",
 					"path": [
 						"api",
 						"CreditCard"
@@ -59,11 +159,61 @@
 		{
 			"name": "PUT Credit Card",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCM0M4OTlDOUU3MENBMDFDNzg0RDFFNEMxQzMyMUExIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjY1NTc5ODcsImV4cCI6MTYyNjU2MTU4NywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiY2xpZW50Q3JlZGl0Q2FyZCIsImp0aSI6IkQzQzJDNTM2MjYyMEQ0Qzg3RTIzRUIxMzkxNDA5Q0IyIiwiaWF0IjoxNjI2NTU3OTg3LCJzY29wZSI6WyJhcGlDcmVkaXRDYXJkIl19.CJJwvpayy1v61qAkQ4Y59DuS3v2VnciqfmRwXvlfwOuudxuPsn4r7Ly4YZm3DhpbvlaMTNkjlR5MbJHHSbrkrheWHGUtdjNTfmwHWB3BqBQu6QYr3gqYi_UBYe-xCHMSHLKjCaibHE_tkJJe7gXUsdWj3IkhbKofoeuLZfl4-vhLKNx_cNlUyQazAhlUlQtdVV7o_lmkIOePPs6gMpzHicOE4ns2kfs50vpwEO3SmEeFLVsXAO1uv5_HDdhQklmalOucZ70CPtKR_309oxZQBgbbsqJGtAgRExiZlBzeEQChWBBAR-zX7Naru2TXRG5N15oLSi1D56WBoaFitC5I4Q",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://localhost:5001/connect/token",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"id\": 1,\r\n    \"name\":\"tasneem naushad\",\r\n    \"creditCardNumber\":\"4111111111111111\",\r\n    \"csv\":\"123\",\r\n    \"expiryDate\":\"2021-08-21\"\r\n}",
+					"raw": "{\r\n   \"id\": 1,\r\n    \"name\":\"mrs tasneem naushad\",\r\n    \"creditCardNumber\":\"4999999999999103\",\r\n    \"csv\":\"123\",\r\n    \"expiryDate\":\"2021-08-21\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -71,12 +221,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/api/CreditCard/1",
+					"raw": "https://localhost:6001/api/CreditCard/1",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "5001",
+					"port": "6001",
 					"path": [
 						"api",
 						"CreditCard",
@@ -90,6 +240,46 @@
 		{
 			"name": "DELETE Credit Card",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessTokenUrl",
+							"value": "https://localhost:5001/connect/token",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
@@ -108,6 +298,135 @@
 				"description": "https://localhost:5001/api/CreditCard/1"
 			},
 			"response": []
+		},
+		{
+			"name": "Request Token",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/identity/RequestToken?",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"identity",
+						"RequestToken"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				},
+				"description": "https://localhost:6001/identity/RequestToken?"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Credit Cards",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCM0M4OTlDOUU3MENBMDFDNzg0RDFFNEMxQzMyMUExIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjY1NTkyNTgsImV4cCI6MTYyNjU2Mjg1OCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiY2xpZW50Q3JlZGl0Q2FyZCIsImp0aSI6IjQ5RDIzNDEzNkZDNUVGRkM3ODcyRDFDQTU1NDg1NEFBIiwiaWF0IjoxNjI2NTU5MjU4LCJzY29wZSI6WyJhcGlDcmVkaXRDYXJkIl19.eWHvaSuhwsyzSR-XLt0FUC4RzeUGjXzZLJZrm3hQ6W1OgSjrsO4pG1TK7Wr4GpkrXMvOB2cWszH_joOzQwhD8VZI78yaDHbikR_wpNnLD5fjGhUN9YKKhGBMJLxBgnhab6IkR9b1dxWmAv9-zdCJKU9udEw-8uPhHGeH1w0BRH-L7uxXsYzyGgmJMyy0GfZc4MfDnvDs-AE8iwbWNqqDK56Qm081gTOJ8sAKHPRxynVMO8u40Rx0VZNqxLunPfKMbZR1hDTPRM2wYz9Qo8-KkeHWH42JzDwpAtjQNZB4BQg7EY6pMEFl_Gl7HOp-V6pf3s-cfpLQYGlkZtwThha9_A",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://localhost:5001/connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "clientCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "apiCreditCard",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "secret17july",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:6001/api/CreditCard",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"api",
+						"CreditCard"
+					]
+				},
+				"description": "https://localhost:6001/api/CreditCard"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "apitoken",
+			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkNCM0M4OTlDOUU3MENBMDFDNzg0RDFFNEMxQzMyMUExIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2MjY1MDc3NzMsImV4cCI6MTYyNjUxMTM3MywiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvcmVzb3VyY2VzIiwiY2xpZW50X2lkIjoiY2xpZW50Q3JlZGl0Q2FyZCIsImp0aSI6IkYyQTkyMThEMzMxRjM3OEU1QUQyQzg3QUI1ODJCODYzIiwiaWF0IjoxNjI2NTA3NzczLCJzY29wZSI6WyJhcGlDcmVkaXRDYXJkIl19.vMqVrBdPFeZ4pEbPzaXGy9IgZxAHxqeVaLK5hMRu7VncKnHf5yw2xO__mP1xq7KnU7jc13HDmmmhg4kTghpJGxTbAq7Ek03mjkggMkexov7SMLMvKDSa5SYgkLQGsCAVlgTBlumJub3Uw0uM-d0iWxF6rmth17_Mg6_rRAhD3uWUOJkldFWPVbHajurZAkZ3IwCOqW2iu8ouexMZC0td7Am16JSq-OOUbBgXXgiKff6jD1V27sYwRJt65_IEE261RZ4JYSzBxzI8u5rUJOmqcCOtgapLoSWJvPF5qPJG75VP-WF6X9NVgO9-nMsR69jcQBpV1_5ppf6IwAFu-JcjNQ"
 		}
 	]
 }

@@ -16,5 +16,7 @@ namespace CreditCardApi.Model
 
         [Required]
         public System.DateTime ExpiryDate { get; set; }
+        public string EncryptedCreditCard {get;set;}
+        public string EncryptedCSV {get;set;}
     }
 }
